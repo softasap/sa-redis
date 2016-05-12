@@ -18,6 +18,22 @@ Example of use:
 
 </pre>
 
+Advanced:
+
+<pre>
+
+
+     - {
+         role: "sa-redis",
+         redis_bind_to: 0.0.0.0, 
+         redis_properties:
+           - {regexp: "^bind *", line: "bind {{redis_bind_to}}"}
+           - {regexp: "^requirepass *", line:"requirepass YOUR_SECURE_PASS"} 
+       }
+
+
+</pre>
+
 
 Creating the password:
 
