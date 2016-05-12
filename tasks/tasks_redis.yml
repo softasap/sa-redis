@@ -9,7 +9,7 @@
 
   - name: Redis | Patch basic settings /etc/redis/redis.conf
     lineinfile: dest=/etc/redis/redis.conf  regexp="{{item.regexp}}" line="{{item.line}}" insertafter="{{item.insertafter | default('EOF')}}"
-    with_items: "{{redis_properties}}"
+    with_items: "{{redis_properties | default([])}}"
     notify: restart redis
     become: yes
     tags:
