@@ -1,6 +1,6 @@
 ---
 # defaults file for sa-redis
-  
+
 
   redis_bind_to: 127.0.0.1
 
@@ -8,5 +8,4 @@
     - {regexp: "^bind *", line: "bind {{redis_bind_to}}"}
 #   - {regexp: "^requirepass *", line:"requirepass YOUR_SECURE_PASS"}  # Secure redis with pass
 
-
-
+  option_install_redis_commander: false

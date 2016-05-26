@@ -6,7 +6,7 @@ sa-redis
 
 Installs basic redis setup with necessary system adjustments. Optional config patch.
 
-
+If you have node, installs redis commander https://github.com/joeferner/redis-commander  with option  option_install_redis_commander: true
 
 Example of use:
 
@@ -25,10 +25,11 @@ Advanced:
 
      - {
          role: "sa-redis",
-         redis_bind_to: 0.0.0.0, 
+         redis_bind_to: 0.0.0.0,
          redis_properties:
            - {regexp: "^bind *", line: "bind {{redis_bind_to}}"}
-           - {regexp: "^requirepass *", line:"requirepass YOUR_SECURE_PASS"} 
+           - {regexp: "^requirepass *", line:"requirepass YOUR_SECURE_PASS"}
+         option_install_redis_commander: true         
        }
 
 
@@ -69,4 +70,3 @@ Creating a SHA256 Hash for Redis password
 
 ➜  ~  echo "sa-redis" | sha256sum
 84e5145797f2a1593a38677389c081630ce67cd3b5f272f3f750c5ae2cf50090  -
-
