@@ -29,7 +29,8 @@ Advanced:
          redis_properties:
            - {regexp: "^bind *", line: "bind {{redis_bind_to}}"}
            - {regexp: "^requirepass *", line:"requirepass YOUR_SECURE_PASS"}
-         option_install_redis_commander: true         
+         option_install_redis_commander: true,
+         option_install_using_chris_lea_ppa: true        
        }
 
 

@@ -9,3 +9,4 @@
 #   - {regexp: "^requirepass *", line:"requirepass YOUR_SECURE_PASS"}  # Secure redis with pass
 
   option_install_redis_commander: false
+  option_install_using_chris_lea_ppa: false

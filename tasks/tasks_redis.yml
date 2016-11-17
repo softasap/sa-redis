@@ -1,6 +1,13 @@
 # According to http://redis.io/documentation
 ---
 
+  - name: Redis | Register Chris Lea PPA, if selected   
+    apt_repository: repo='ppa:chris-lea/redis-server' state=present
+    when: option_install_using_chris_lea_ppa
+    become: yes
+    tags:
+      - redis
+
   - name: Redis | Install package
     apt: pkg="redis-server" state="present" update_cache="yes"
     become: yes
