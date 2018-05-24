@@ -2,7 +2,6 @@
 - hosts: all
   vars:
 
-    option_install_java: true
     option_allow_remote_connections: true
 
   roles:
