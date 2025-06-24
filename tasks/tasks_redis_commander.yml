@@ -19,7 +19,7 @@
   community.general.npm:
     name: "{{ item }}"
     state: present
-    global: yes
+    global: true
     executable: "{{ npm_path_detected }}/npm"
   with_items:
     - redis-commander
