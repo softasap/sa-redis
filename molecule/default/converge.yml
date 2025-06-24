@@ -13,7 +13,7 @@
 
     - name: Include default vars
       ansible.builtin.include_vars:
-        ansible.builtin.file: "vars/molecule_vars.yml"
+        file: "vars/molecule_vars.yml"
 
   roles:
     - role: sa-redis
