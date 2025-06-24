@@ -1,24 +1,32 @@
 # According to http://redis.io/documentation
 ---
 
-  - name: Redis | Register Chris Lea PPA, if selected   
-    apt_repository: repo='ppa:chris-lea/redis-server' state=present
-    when: option_install_using_chris_lea_ppa
-    become: yes
-    tags:
-      - redis
+- name: Redis | Register Chris Lea PPA, if selected
+  ansible.builtin.apt_repository:
+    repo: 'ppa:chris-lea/redis-server'
+    state: present
+  when: option_install_using_chris_lea_ppa
+  become: true
+  tags:
+    - redis
 
-  - name: Redis | Install package
-    apt: pkg="redis-server" state="present" update_cache="yes"
-    become: yes
-    tags:
-      - redis
+- name: Redis | Install package
+  ansible.builtin.apt:
+    pkg: "redis-server"
+    state: "present"
+    update_cache: "yes"
+  become: true
+  tags:
+    - redis
 
-  - name: Redis | Patch basic settings /etc/redis/redis.conf
-    lineinfile: dest=/etc/redis/redis.conf  regexp="{{item.regexp}}" line="{{item.line}}" insertafter="{{item.insertafter | default('EOF')}}"
-    with_items: "{{redis_properties | default([])}}"
-    notify: restart redis
-    become: yes
-    tags:
-     - redis
-
+- name: Redis | Patch basic settings /etc/redis/redis.conf
+  ansible.builtin.lineinfile:
+    dest: /etc/redis/redis.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    insertafter: "{{ item.insertafter | default('EOF') }}"
+  with_items: "{{ redis_properties | default([]) }}"
+  notify: restart redis
+  become: true
+  tags:
+    - redis

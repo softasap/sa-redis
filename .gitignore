@@ -3,3 +3,11 @@ box-example/roles
 tempfile
 local*.sh
 .idea
+__pycache__/
+**/*/__pycache__
+*.pyc
+.venv
+.cache
+.aid*
+.ansible
+auto-patch.sh
